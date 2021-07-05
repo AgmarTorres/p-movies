@@ -24,7 +24,10 @@ module.exports = {
         "prettier"
     ],
     "rules": {
-        "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
-        "react/react-in-jsx-scope": "off"
+        "@typescript-eslint/explicit-function-return-type": "off",
+        "@typescript-eslint/explicit-module-boundary-types": ["off"],
+        "react/react-in-jsx-scope": "off",
+        "react/jsx-filename-extension": ["off"],
+        "import/extensions": "off"
     }
 };
