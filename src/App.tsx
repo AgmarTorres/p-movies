@@ -1,5 +1,7 @@
+import Route from './components/routes';
+
 function App() {
-	return <div className="App"></div>;
+	return <Route />;
 }
 
 export default App;
