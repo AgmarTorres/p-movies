@@ -3,7 +3,7 @@ import { SimpleMovie } from '../../domain/movies';
 
 type Props = {
 	movie: SimpleMovie;
-	chooseFilm: (id: number) => void;
+	chooseFilm: (title: string) => void;
 };
 
 const MoveItem = ({ movie, chooseFilm }: Props) => {
@@ -14,7 +14,7 @@ const MoveItem = ({ movie, chooseFilm }: Props) => {
 			<span>Epsódio {episode_id}</span>
 			<h4>Lançado:</h4>
 			<p>{new Date(created).toLocaleDateString('pt-br')}</p>
-			<Button type="button" onClick={() => chooseFilm(episode_id)}>
+			<Button type="button" onClick={() => chooseFilm(title)}>
 				Selecionar
 			</Button>
 		</Container>

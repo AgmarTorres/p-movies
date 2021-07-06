@@ -17,7 +17,7 @@ const Movies = () => {
 	const [isLoading, setIsLoading] = React.useState(false);
 	const [error, setError] = React.useState(false);
 	const handleChooseFile = React.useCallback(
-		(id: number) => alert(`ID selecionado ${id}`),
+		(title: string) => alert(`'${title}' selecionado`),
 		[]
 	);
 	React.useEffect(() => {
