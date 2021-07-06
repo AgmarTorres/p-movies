@@ -6,4 +6,11 @@ export const theme = {
 		white: '#FFF',
 		black: '#000',
 	},
+	sizes: {
+		fontSizes: {
+			small: '0.8rem',
+			normal: '1rem',
+			big: '1.5rem',
+		},
+	},
 };
