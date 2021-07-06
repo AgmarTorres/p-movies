@@ -1,6 +1,6 @@
 import { ComponentType } from 'react';
 import { RouteProps as ReactRouteProps } from 'react-router-dom';
-import Films from './../../pages/films/index';
+import Movies from '../../pages/movies/index';
 
 export interface RouteProps extends ReactRouteProps {
 	component: ComponentType;
@@ -12,12 +12,12 @@ const options: RouteProps[] = [
 	{
 		path: '/',
 		exact: true,
-		component: Films,
+		component: Movies,
 	},
 	{
-		path: '/films',
+		path: '/movies',
 		exact: true,
-		component: Films,
+		component: Movies,
 	},
 ];
 
