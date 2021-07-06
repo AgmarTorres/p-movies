@@ -15,15 +15,17 @@ const Movies = () => {
 	const [movies, setMovies] = React.useState<MovieProps>(emptyMovie);
 	const [search, setSearch] = React.useState('');
 	const [isLoading, setIsLoading] = React.useState(false);
+	const [error, setError] = React.useState(false);
 
 	React.useEffect(() => {
 		setIsLoading(true);
+		setError(false);
 		api
 			.get<MovieProps>('/films')
 			.then(({ data }) => {
 				setMovies(data);
 			})
-			.catch(() => console.log('Houve um erro'))
+			.catch(() => setError(true))
 			.finally(() => setIsLoading(false));
 	}, []);
 
@@ -54,6 +56,7 @@ const Movies = () => {
 				</SearchContext.Provider>
 				<Grid>{renderMovieItem()}</Grid>
 				{isLoading && <Spinner />}
+				{error && <span>Aconteceu algum error</span>}
 			</Form>
 		</Container>
 	);
