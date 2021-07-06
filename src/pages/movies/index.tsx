@@ -1,24 +1,43 @@
 import { Container, Header, Form, Grid } from './styles';
+import SearchContext from '../../context/search';
 import Input from '../../components/input';
 import MovieItem from '../../components/movie-item';
-import { emptyMovie, MovieProps } from './../../domain/movies/index';
+import {
+	emptyMovie,
+	MovieProps,
+	SimpleMovie,
+} from './../../domain/movies/index';
 import api from '../../services/api';
 import React from 'react';
+import { Spinner } from './../../components/spinner/index';
 
 const Movies = () => {
 	const [movies, setMovies] = React.useState<MovieProps>(emptyMovie);
+	const [search, setSearch] = React.useState('');
+	const [isLoading, setIsLoading] = React.useState(false);
 
 	React.useEffect(() => {
+		setIsLoading(true);
 		api
 			.get<MovieProps>('/films')
 			.then(({ data }) => {
 				setMovies(data);
 			})
-			.catch(() => console.log('Houve um erro'));
+			.catch(() => console.log('Houve um erro'))
+			.finally(() => setIsLoading(false));
 	}, []);
 
+	const handleFilterMovies = (): SimpleMovie[] =>
+		search
+			? movies.results.filter((movie) =>
+					movie.title.toLowerCase().includes(search)
+			  )
+			: movies.results;
+
 	const renderMovieItem = () => {
-		return movies.results.map((movie) => (
+		const filterMovies = handleFilterMovies();
+
+		return filterMovies.map((movie) => (
 			<MovieItem key={movie.episode_id} movie={movie} />
 		));
 	};
@@ -30,8 +49,11 @@ const Movies = () => {
 				<span> Filmes</span>
 			</Header>
 			<Form>
-				<Input />
+				<SearchContext.Provider value={{ setSearch }}>
+					<Input />
+				</SearchContext.Provider>
 				<Grid>{renderMovieItem()}</Grid>
+				{isLoading && <Spinner />}
 			</Form>
 		</Container>
 	);
