@@ -14,8 +14,15 @@ const Movies = () => {
 			.then(({ data }) => {
 				setMovies(data);
 			})
-			.catch((err) => console.log(err));
+			.catch(() => console.log('Houve um erro'));
 	}, []);
+
+	const renderMovieItem = () => {
+		return movies.results.map((movie) => (
+			<MovieItem key={movie.episode_id} movie={movie} />
+		));
+	};
+
 	return (
 		<Container>
 			<Header>
@@ -24,9 +31,7 @@ const Movies = () => {
 			</Header>
 			<Form>
 				<Input />
-				<Grid>
-					<MovieItem />
-				</Grid>
+				<Grid>{renderMovieItem()}</Grid>
 			</Form>
 		</Container>
 	);

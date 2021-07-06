@@ -1,4 +1,4 @@
-interface SimpleMovie {
+export interface SimpleMovie {
 	title: string;
 	episode_id: 4;
 	opening_crawl: string;
