@@ -16,7 +16,10 @@ const Movies = () => {
 	const [search, setSearch] = React.useState('');
 	const [isLoading, setIsLoading] = React.useState(false);
 	const [error, setError] = React.useState(false);
-
+	const handleChooseFile = React.useCallback(
+		(id: number) => alert(`ID selecionado ${id}`),
+		[]
+	);
 	React.useEffect(() => {
 		setIsLoading(true);
 		setError(false);
@@ -40,7 +43,11 @@ const Movies = () => {
 		const filterMovies = handleFilterMovies();
 
 		return filterMovies.map((movie) => (
-			<MovieItem key={movie.episode_id} movie={movie} />
+			<MovieItem
+				key={movie.episode_id}
+				movie={movie}
+				chooseFilm={handleChooseFile}
+			/>
 		));
 	};
 
