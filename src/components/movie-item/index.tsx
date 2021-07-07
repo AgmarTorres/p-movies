@@ -6,7 +6,7 @@ type Props = {
 	chooseFilm: (title: string) => void;
 };
 
-const MoveItem = ({ movie, chooseFilm }: Props) => {
+const MovieItem = ({ movie, chooseFilm }: Props) => {
 	const { title, episode_id, created } = movie;
 	return (
 		<Container>
@@ -21,4 +21,4 @@ const MoveItem = ({ movie, chooseFilm }: Props) => {
 	);
 };
 
-export default MoveItem;
+export default MovieItem;

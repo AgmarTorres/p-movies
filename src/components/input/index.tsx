@@ -9,6 +9,7 @@ function Input() {
 			<input
 				type="search"
 				name="search"
+				data-testid="input"
 				placeholder="Digite aqui o nome de um filme"
 				onChange={(e) => setSearch(e.target.value)}
 			/>
