@@ -23,7 +23,10 @@
 	"scripts": {
 		"dev": "react-scripts start",
 		"build": "react-scripts build",
-		"test": "react-scripts test",
+		"test": "jest --passWithNoTests --no-cache --runInBand",
+		"test:watch": "npm test -- --watch",
+		"test:staged": "npm test -- --findRelatedTests",
+		"test:ci": "npm test -- --coverage",
 		"eject": "react-scripts eject",
 		"lint": "eslint ./src",
 		"lintFix": "eslint ./src --fix",
