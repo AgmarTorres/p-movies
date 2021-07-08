@@ -1,4 +1,4 @@
-import { Container, Header, Form, Grid } from './styles';
+import { Container, Form, Grid } from './styles';
 import SearchContext from '../../context/search';
 import Input from '../../components/input';
 import MovieItem from '../../components/movie-item';
@@ -10,6 +10,8 @@ import {
 import api from '../../services/api';
 import React from 'react';
 import { Spinner } from './../../components/spinner/index';
+import Header from './../../components/header/index';
+import { handleFilterMovies } from '../../utils/functions/filter-movies';
 
 const Movies = () => {
 	const [movies, setMovies] = React.useState<MovieProps>(emptyMovie);
@@ -32,15 +34,10 @@ const Movies = () => {
 			.finally(() => setIsLoading(false));
 	}, []);
 
-	const handleFilterMovies = (): SimpleMovie[] =>
-		search
-			? movies.results.filter((movie) =>
-					movie.title.toLowerCase().includes(search)
-			  )
-			: movies.results;
-
 	const renderMovieItem = () => {
-		const filterMovies = handleFilterMovies();
+		const filterMovies = search
+			? handleFilterMovies({ search, movies: movies.results })
+			: movies.results;
 
 		return filterMovies.map((movie) => (
 			<MovieItem
@@ -53,17 +50,14 @@ const Movies = () => {
 
 	return (
 		<Container>
-			<Header>
-				<img src="/pismo-logo.png" alt="" />
-				<span> Filmes</span>
-			</Header>
+			<Header />
 			<Form>
 				<SearchContext.Provider value={{ setSearch }}>
 					<Input />
 				</SearchContext.Provider>
-				<Grid>{renderMovieItem()}</Grid>
+				<Grid data-testid="grid">{renderMovieItem()}</Grid>
 				{isLoading && <Spinner />}
-				{error && <span>Aconteceu algum error</span>}
+				{error && <span data-testid="error">Aconteceu algum error</span>}
 			</Form>
 		</Container>
 	);

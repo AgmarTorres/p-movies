@@ -7,24 +7,6 @@ export const Container = styled.div`
 	padding: 5px;
 `;
 
-export const Header = styled.header`
-	width: 100%;
-	max-width: 1200px;
-	margin: 20px auto;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-
-	img {
-		width: 200px;
-	}
-
-	span {
-		font-size: ${({ theme }) => theme.sizes.fontSizes.big};
-		text-decoration: underline;
-	}
-`;
-
 export const Form = styled.form`
 	display: flex;
 	width: 100%;
@@ -41,4 +23,7 @@ export const Grid = styled.div`
 	align-self: center;
 	justify-self: center;
 	gap: 5%;
+	@media (max-width: 500px) {
+		grid-template-columns: repeat(repeat, 1fr);
+	}
 `;
