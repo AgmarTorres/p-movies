@@ -1,6 +1,6 @@
 export interface SimpleMovie {
 	title: string;
-	episode_id: 4;
+	episode_id: number;
 	opening_crawl: string;
 	director: string;
 	producer: string;
@@ -16,5 +16,6 @@ export interface MovieProps {
 }
 
 export const emptyMovie = (): MovieProps => {
-	return { count: 0, results: [] };
+	const results: SimpleMovie[] = [];
+	return { count: 0, results };
 };
