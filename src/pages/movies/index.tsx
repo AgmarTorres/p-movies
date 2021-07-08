@@ -2,11 +2,7 @@ import { Container, Form, Grid } from './styles';
 import SearchContext from '../../context/search';
 import Input from '../../components/input';
 import MovieItem from '../../components/movie-item';
-import {
-	emptyMovie,
-	MovieProps,
-	SimpleMovie,
-} from './../../domain/movies/index';
+import { emptyMovie, MovieProps } from '../../domain/movies';
 import api from '../../services/api';
 import React from 'react';
 import { Spinner } from './../../components/spinner/index';
@@ -22,6 +18,7 @@ const Movies = () => {
 		(title: string) => alert(`'${title}' selecionado`),
 		[]
 	);
+
 	React.useEffect(() => {
 		setIsLoading(true);
 		setError(false);

@@ -1,6 +1,6 @@
 import { Container } from './styles';
 export const Spinner = () => (
-	<Container>
+	<Container data-testid="spinner">
 		<div></div>
 		<div></div>
 		<div></div>
