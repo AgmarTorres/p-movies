@@ -41,6 +41,10 @@ export const Container = styled.div`
 		transform: scale(1.1);
 		border: 3px solid inherit;
 	}
+
+	@media (max-width: 500px) {
+		margin: 0 auto;
+	}
 `;
 
 export const Button = styled.button`
