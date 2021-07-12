@@ -9,5 +9,5 @@ export const handleFilterMovies = ({
 	movies,
 }: FilterMoviesProps): SimpleMovie[] =>
 	movies.filter((movie: SimpleMovie) =>
-		movie.title.toLowerCase().includes(search)
+		movie.title.toLowerCase().includes(search.toLowerCase())
 	);

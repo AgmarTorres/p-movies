@@ -8,6 +8,7 @@ export interface SimpleMovie {
 	created: string;
 	edited: string;
 	url: string;
+	characters: Array<string>;
 }
 
 export interface MovieProps {
